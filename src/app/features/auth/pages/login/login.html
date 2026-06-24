@@ -1,0 +1,24 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <h1>Psico Admin</h1>
+    <p>Inicia sesión para continuar</p>
+
+    <form (ngSubmit)="onLogin()">
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" name="email" [(ngModel)]="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" name="password" [(ngModel)]="password" />
+      </mat-form-field>
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+        {{ loading ? 'Entrando...' : 'Entrar' }}
+      </button>
+    </form>
+  </mat-card>
+</div>
