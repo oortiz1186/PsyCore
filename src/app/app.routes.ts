@@ -7,6 +7,7 @@ import { PatientList } from './features/patients/pages/patient-list/patient-list
 import { PatientForm } from './features/patients/pages/patient-form/patient-form';
 import { AppointmentList } from './features/appointments/pages/appointment-list/appointment-list';
 import { AppointmentForm } from './features/appointments/pages/appointment-form/appointment-form';
+import { PatientDetail } from './features/patients/pages/patient-detail/patient-detail';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,10 @@ export const routes: Routes = [
       {
         path: 'patients/new',
         component: PatientForm,
+      },
+      {
+        path: 'patients/:id',
+        component: PatientDetail,
       },
       {
         path: 'appointments',

@@ -1,1 +1,70 @@
-<p>appointment-form works!</p>
+<h1>Nueva cita</h1>
+
+<form>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Paciente</mat-label>
+
+    <mat-select [(ngModel)]="appointment.patient_id" name="patient">
+      @for (patient of patients; track patient.id) {
+        <mat-option [value]="patient.id">
+          {{ patient.first_name }} {{ patient.last_name }}
+        </mat-option>
+      }
+    </mat-select>
+
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Fecha y hora</mat-label>
+
+    <input
+      matInput
+      type="datetime-local"
+      [(ngModel)]="appointment.appointment_date"
+      name="appointment_date"
+    >
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Estado</mat-label>
+
+    <mat-select [(ngModel)]="appointment.status" name="status">
+      <mat-option value="Pendiente">Pendiente</mat-option>
+      <mat-option value="Confirmada">Confirmada</mat-option>
+      <mat-option value="Cancelada">Cancelada</mat-option>
+      <mat-option value="Completada">Completada</mat-option>
+    </mat-select>
+
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Notas</mat-label>
+
+    <textarea
+      matInput
+      rows="4"
+      [(ngModel)]="appointment.notes"
+      name="notes">
+    </textarea>
+  </mat-form-field>
+
+  <br>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="save()"
+    type="button">
+
+    Guardar cita
+
+  </button>
+
+</form>

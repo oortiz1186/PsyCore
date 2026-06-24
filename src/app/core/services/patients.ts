@@ -4,40 +4,28 @@ import { Supabase } from './supabase';
 @Injectable({
   providedIn: 'root',
 })
-export class Appointments {
+export class Patients {
   constructor(private supabase: Supabase) {}
 
   async getAll() {
     return await this.supabase.client
-      .from('appointments')
-      .select(`
-        *,
-        patients (
-          id,
-          first_name,
-          last_name
-        )
-      `)
-      .order('appointment_date', { ascending: false });
+      .from('patients')
+      .select('*')
+      .order('id', { ascending: false });
   }
 
-  async create(appointment: any) {
-    return await this.supabase.client
-      .from('appointments')
-      .insert(appointment);
+  async create(patient: any) {
+    return await this.supabase.client.from('patients').insert(patient);
   }
 
-  async update(id: number, appointment: any) {
-    return await this.supabase.client
-      .from('appointments')
-      .update(appointment)
-      .eq('id', id);
+  async update(id: number, patient: any) {
+    return await this.supabase.client.from('patients').update(patient).eq('id', id);
   }
 
   async delete(id: number) {
-    return await this.supabase.client
-      .from('appointments')
-      .delete()
-      .eq('id', id);
+    return await this.supabase.client.from('patients').delete().eq('id', id);
+  }
+  async getById(id: number) {
+    return await this.supabase.client.from('patients').select('*').eq('id', id).single();
   }
 }

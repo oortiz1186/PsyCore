@@ -14,7 +14,7 @@ import { Patients } from '../../../../core/services/patients';
 })
 export class PatientList implements OnInit {
   patients: any[] = [];
-  displayedColumns: string[] = ['id', 'name', 'phone', 'email', 'active'];
+  displayedColumns: string[] = ['id', 'name', 'phone', 'email', 'active', 'actions'];
 
   constructor(private patientsService: Patients) {}
 

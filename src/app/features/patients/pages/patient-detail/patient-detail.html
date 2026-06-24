@@ -1,0 +1,57 @@
+@if (patient) {
+<p>Paciente cargado:</p>
+<pre>{{ patient | json }}</pre>
+<h1>
+  {{ patient.first_name }}
+  {{ patient.last_name }}
+</h1>
+
+<hr>
+
+<h2>Información General</h2>
+
+<p><strong>Correo:</strong> {{ patient.email }}</p>
+
+<p><strong>Teléfono:</strong> {{ patient.phone }}</p>
+
+<p><strong>Género:</strong> {{ patient.gender }}</p>
+
+<p><strong>Fecha nacimiento:</strong> {{ patient.birth_date }}</p>
+
+<p><strong>Dirección:</strong> {{ patient.address }}</p>
+
+<hr>
+
+<h2>Contacto de Emergencia</h2>
+
+<p>
+  <strong>Nombre:</strong>
+  {{ patient.emergency_contact }}
+</p>
+
+<p>
+  <strong>Teléfono:</strong>
+  {{ patient.emergency_phone }}
+</p>
+
+<hr>
+
+<h2>Motivo de Consulta</h2>
+
+<p>{{ patient.consultation_reason }}</p>
+
+<hr>
+
+<h2>Historial Clínico</h2>
+
+<p>
+  Próximamente mostraremos:
+</p>
+
+<ul>
+  <li>Citas</li>
+  <li>Notas Clínicas</li>
+  <li>Evolución</li>
+</ul>
+
+}
