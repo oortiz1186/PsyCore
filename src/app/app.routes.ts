@@ -5,6 +5,8 @@ import { Home } from './features/dashboard/pages/home/home';
 import { MainLayout } from './shared/components/main-layout/main-layout';
 import { PatientList } from './features/patients/pages/patient-list/patient-list';
 import { PatientForm } from './features/patients/pages/patient-form/patient-form';
+import { AppointmentList } from './features/appointments/pages/appointment-list/appointment-list';
+import { AppointmentForm } from './features/appointments/pages/appointment-form/appointment-form';
 
 export const routes: Routes = [
   {
@@ -27,6 +29,14 @@ export const routes: Routes = [
       {
         path: 'patients/new',
         component: PatientForm,
+      },
+      {
+        path: 'appointments',
+        component: AppointmentList,
+      },
+      {
+        path: 'appointments/new',
+        component: AppointmentForm,
       },
     ],
   },

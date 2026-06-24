@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { supabase } from '../supabase/supabase';
+import { Supabase } from './supabase';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AppointmentsService {
-  async getAppointments() {
-    const { data, error } = await supabase
+export class Appointments {
+  constructor(private supabase: Supabase) {}
+
+  async getAll() {
+    return await this.supabase.client
       .from('appointments')
       .select(`
         *,
@@ -16,19 +18,21 @@ export class AppointmentsService {
           last_name
         )
       `)
-      .order('appointment_date', { ascending: true });
-
-    if (error) throw error;
-    return data;
+      .order('appointment_date', { ascending: false });
   }
 
-  async createAppointment(appointment: any) {
-    const { data, error } = await supabase
-      .from('appointments')
-      .insert([appointment])
-      .select();
+  async create(appointment: any) {
+    return await this.supabase.client.from('appointments').insert(appointment);
+  }
 
-    if (error) throw error;
-    return data;
+  async update(id: number, appointment: any) {
+    return await this.supabase.client
+      .from('appointments')
+      .update(appointment)
+      .eq('id', id);
+  }
+
+  async delete(id: number) {
+    return await this.supabase.client.from('appointments').delete().eq('id', id);
   }
 }
